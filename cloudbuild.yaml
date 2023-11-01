@@ -1,0 +1,5 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/adazolhub-cloud-dev/github.com/adazol123/lab-cloud-run:$COMMIT_SHA', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/adazolhub-cloud-dev/github.com/adazol123/lab-cloud-run:$COMMIT_SHA']
