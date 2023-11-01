@@ -1,1 +1,1 @@
-[ x ] - Cloud Build
+ - [x]  Cloud Build
