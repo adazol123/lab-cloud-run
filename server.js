@@ -18,6 +18,13 @@ function serverInit() {
   return;
 }
 
+app.get("/", (req, res) => {
+  res.status(200).send({
+    environment: "api",
+    port: PORT,
+  });
+});
+
 io.on("connection", onConnection);
 
 httpServer.listen(PORT, serverInit);
