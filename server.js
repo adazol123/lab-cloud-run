@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 8080;
 
 function onConnection(socket) {
   socket.on("heartbeat", (data) => {
-    return socket.broadcast.emit("heartbeat", data);
+    return socket.broadcast.emit("heartbeat", { ping: "pong" });
   });
 }
 
