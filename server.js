@@ -6,14 +6,35 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
-    origin: 'http://localhost:5173'
-  }
+    origin: "http://localhost:5173",
+  },
 });
 const PORT = process.env.PORT || 8080;
 
 function onConnection(socket) {
   socket.on("heartbeat", (data) => {
-    return socket.broadcast.emit("heartbeat", { ping: "pong" });
+    return socket.broadcast.emit("heartbeat", data);
+  });
+
+  socket.emit("stocks", {
+    crypto: [
+      {
+        name: "USDT",
+        price: 24,
+      },
+      {
+        name: "BTC",
+        price: 25465576,
+      },
+      {
+        name: "ETH",
+        price: 235465,
+      },
+      {
+        name: "XRP",
+        price: 14,
+      },
+    ],
   });
 }
 
