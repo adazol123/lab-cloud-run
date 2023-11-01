@@ -1,16 +1,24 @@
+import { Socket } from "dgram";
 import express from "express";
-import { createServer } from "http";
+import { createServer } from "node:http";
 import { Server } from "socket.io";
 
+const PORT = process.env.PORT || 8080;
 const app = express();
 const httpServer = createServer(app);
-const io = new Server(httpServer, {
+
+const serverOptions = {
   cors: {
     origin: "http://localhost:5173",
   },
-});
-const PORT = process.env.PORT || 8080;
+};
 
+const io = new Server(httpServer, serverOptions);
+
+/**
+ *
+ * @param {Socket} socket
+ */
 function onConnection(socket) {
   socket.on("heartbeat", (data) => {
     return socket.broadcast.emit("heartbeat", data);
