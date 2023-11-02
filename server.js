@@ -11,6 +11,7 @@ const serverOptions = {
   cors: {
     origin: "http://localhost:5173",
   },
+  transports: ["polling", "websocket", "webtransport"],
 };
 
 const io = new Server(httpServer, serverOptions);
@@ -24,26 +25,28 @@ function onConnection(socket) {
     return socket.broadcast.emit("heartbeat", data);
   });
 
-  socket.emit("stocks", {
-    crypto: [
-      {
-        name: "USDT",
-        price: 24,
-      },
-      {
-        name: "BTC",
-        price: 25465576,
-      },
-      {
-        name: "ETH",
-        price: 235465,
-      },
-      {
-        name: "XRP",
-        price: 14,
-      },
-    ],
-  });
+  setInterval(() => {
+    socket.emit("stocks", {
+      crypto: [
+        {
+          name: "USDT",
+          price: Math.floor(Math.random * 100000 + 1),
+        },
+        {
+          name: "BTC",
+          price: Math.floor(Math.random * 100000 + 1),
+        },
+        {
+          name: "ETH",
+          price: Math.floor(Math.random * 100000 + 1),
+        },
+        {
+          name: "XRP",
+          price: Math.floor(Math.random * 100000 + 1),
+        },
+      ],
+    });
+  }, 5000);
 }
 
 function serverInit() {
