@@ -10,8 +10,7 @@ const httpServer = createServer(app);
 const serverOptions = {
   cors: {
     origin: "http://localhost:5173",
-  },
-  transports: ["polling", "websocket", "webtransport"],
+  }
 };
 
 const io = new Server(httpServer, serverOptions);
@@ -46,7 +45,7 @@ function onConnection(socket) {
         },
       ],
     });
-  }, 600000); //10 minutes
+  }, 300000); //5 minutes
 }
 
 function serverInit() {
