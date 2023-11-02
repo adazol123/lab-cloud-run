@@ -30,19 +30,19 @@ function onConnection(socket) {
       crypto: [
         {
           name: "USDT",
-          price: Math.floor(Math.random * 100000 + 1),
+          price: Math.floor((Math.random() * 100000) + 1),
         },
         {
           name: "BTC",
-          price: Math.floor(Math.random * 100000 + 1),
+          price: Math.floor((Math.random() * 100000) + 1),
         },
         {
           name: "ETH",
-          price: Math.floor(Math.random * 100000 + 1),
+          price: Math.floor((Math.random() * 100000) + 1),
         },
         {
           name: "XRP",
-          price: Math.floor(Math.random * 100000 + 1),
+          price: Math.floor((Math.random() * 100000) + 1),
         },
       ],
     });
