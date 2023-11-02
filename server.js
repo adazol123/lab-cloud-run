@@ -46,7 +46,7 @@ function onConnection(socket) {
         },
       ],
     });
-  }, 5000);
+  }, 600000); //10 minutes
 }
 
 function serverInit() {
