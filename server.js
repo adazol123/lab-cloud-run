@@ -9,7 +9,7 @@ const httpServer = createServer(app);
 
 const serverOptions = {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "*",
   }
 };
 
