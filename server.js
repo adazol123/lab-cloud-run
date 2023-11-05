@@ -12,7 +12,7 @@ const serverOptions = {
     origin: "*",
   },
   path: "ws",
-  cookie: true
+  transport: ['websocket']
 };
 
 const io = new Server(httpServer, serverOptions);
