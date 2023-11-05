@@ -99,7 +99,7 @@ function onConnection(socket) {
         },
       ],
     });
-  }, 3000); //5 minutes
+  }, 30000); //5 minutes
 }
 
 function serverInit() {
