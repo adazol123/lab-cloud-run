@@ -1,1 +1,4 @@
- - [x]  Cloud Build
+ - [x]  Cloud Build (CI/CD)
+ - [x]  Cloud Run (Serverless Container)
+ - [x]  Webhooks 
+ - [x]  Cloud Scheduler (Task Jobs)

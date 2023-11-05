@@ -5,7 +5,7 @@ import { Server } from "socket.io";
 import { Logging } from "@google-cloud/logging";
 const projectId = process.env.PROJECT_ID;
 const logName = "backend.logger";
-const logG = new Logging({ projectId: "adazolhub-cloud-dev" });
+const logG = new Logging({ projectId: 'adazolhub-cloud-dev' });
 const log = logG.log(logName);
 const PORT = process.env.PORT || 8080;
 const app = express();
