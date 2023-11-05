@@ -11,8 +11,8 @@ const serverOptions = {
   cors: {
     origin: "*",
   },
-  path: "ws",
-  transport: ['websocket']
+  path: "/ws",
+  transports: ['websocket']
 };
 
 const io = new Server(httpServer, serverOptions);
