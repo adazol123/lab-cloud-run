@@ -5,7 +5,7 @@ import { Server } from "socket.io";
 import { Logging } from "@google-cloud/logging";
 const projectId = process.env.PROJECT_ID;
 const logName = "backend.logger";
-const logG = new Logging({ projectId: 'adazolhub-cloud-dev' });
+const logG = new Logging({ projectId: "adazolhub-cloud-dev" });
 const log = logG.log(logName);
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -19,6 +19,10 @@ const serverOptions = {
   transports: ["websocket"],
 };
 
+const session = {
+  count: 0,
+  connected: [],
+};
 const io = new Server(httpServer, serverOptions);
 
 const metadata = {
@@ -30,6 +34,9 @@ const metadata = {
  * @param {Socket} socket
  */
 function onConnection(socket) {
+  session.count++;
+
+  session.connected.push(socket.id);
   const jsonEntry = log.entry(metadata, {
     message: `new connection: ${socket.id}`,
   });
@@ -41,6 +48,11 @@ function onConnection(socket) {
   });
 
   socket.on("disconnect", () => {
+    session.count--;
+    const index = session.connected.indexOf(socket.id);
+    if (index > -1) {
+      session.connected.splice(index, 1);
+    }
     const jsonEntry = log.entry(metadata, {
       message: `disconnection client: ${socket.id}`,
     });
@@ -77,10 +89,12 @@ function serverInit() {
 }
 
 app.get("/", (req, res) => {
-  res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
+  res.set("Cache-Control", "public, max-age=300, s-maxage=600");
   res.status(200).send({
     environment: "api",
     port: PORT,
+    ping: Math.floor(Math.random() * 1000 + 1),
+    session
   });
 });
 
