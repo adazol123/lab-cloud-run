@@ -10,7 +10,9 @@ const httpServer = createServer(app);
 const serverOptions = {
   cors: {
     origin: "*",
-  }
+  },
+  path: "ws",
+  cookie: true
 };
 
 const io = new Server(httpServer, serverOptions);
