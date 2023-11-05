@@ -5,7 +5,7 @@ import { Server } from "socket.io";
 import { Logging } from "@google-cloud/logging";
 const projectId = process.env.PROJECT_ID;
 const logName = "backend.logger";
-const logG = new Logging({ projectId: 'adazolhub-cloud-dev' });
+const logG = new Logging({ projectId: "adazolhub-cloud-dev" });
 const log = logG.log(logName);
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -58,7 +58,26 @@ function onConnection(socket) {
     });
     log.write(jsonEntry);
   });
-
+  socket.broadcast.emit("stocks", {
+    crypto: [
+      {
+        name: "USDT",
+        price: Math.floor(Math.random() * 100000 + 1),
+      },
+      {
+        name: "BTC",
+        price: Math.floor(Math.random() * 100000 + 1),
+      },
+      {
+        name: "ETH",
+        price: Math.floor(Math.random() * 100000 + 1),
+      },
+      {
+        name: "XRP",
+        price: Math.floor(Math.random() * 100000 + 1),
+      },
+    ],
+  });
   setInterval(() => {
     socket.broadcast.emit("stocks", {
       crypto: [
@@ -80,7 +99,7 @@ function onConnection(socket) {
         },
       ],
     });
-  }, 300000); //5 minutes
+  }, 3000); //5 minutes
 }
 
 function serverInit() {
@@ -94,7 +113,7 @@ app.get("/", (req, res) => {
     environment: "api",
     port: PORT,
     ping: Math.floor(Math.random() * 1000 + 1),
-    session
+    session,
   });
 });
 
