@@ -48,7 +48,7 @@ function onConnection(socket) {
   });
 
   setInterval(() => {
-    socket.emit("stocks", {
+    socket.broadcast.emit("stocks", {
       crypto: [
         {
           name: "USDT",
