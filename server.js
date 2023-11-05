@@ -77,6 +77,7 @@ function serverInit() {
 }
 
 app.get("/", (req, res) => {
+  res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
   res.status(200).send({
     environment: "api",
     port: PORT,
