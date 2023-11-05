@@ -22,7 +22,7 @@ const serverOptions = {
 const io = new Server(httpServer, serverOptions);
 
 const metadata = {
-  resource: { type: "cloudrun_revision" },
+  resource: { type: "cloud_run_revision" },
   severity: "INFO",
 };
 /**
