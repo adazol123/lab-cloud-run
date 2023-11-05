@@ -2,6 +2,9 @@ import { Socket } from "dgram";
 import express from "express";
 import { createServer } from "node:http";
 import { Server } from "socket.io";
+import { Logging } from "@google-cloud/logging";
+
+const logG = new Logging()
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -16,15 +19,21 @@ const serverOptions = {
 };
 
 const io = new Server(httpServer, serverOptions);
-
+let connCount = 0;
 /**
  *
  * @param {Socket} socket
  */
 function onConnection(socket) {
+  logG.entry(`new connection: ${socket.id}`);
+
   socket.on("heartbeat", (data) => {
     return socket.broadcast.emit("heartbeat", data);
   });
+
+  socket.on("disconnect", () => {
+    logG.entry(`disconnection client: ${socket.id}`);
+  })
 
   setInterval(() => {
     socket.emit("stocks", {
