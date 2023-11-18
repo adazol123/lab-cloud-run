@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "standard": "standard-version"
+    "release": "standard-version"
   },
   "author": "Daniel Lozada",
   "license": "MIT",
@@ -21,5 +21,8 @@
   },
   "devDependencies": {
     "standard-version": "^9.5.0"
+  },
+  "standard-version" : {
+    "header" : "Update Changelog header"
   }
 }
