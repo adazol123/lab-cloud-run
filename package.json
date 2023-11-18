@@ -23,6 +23,10 @@
     "standard-version": "^9.5.0"
   },
   "standard-version": {
-    "header": "Update Changelog header"
+    "header": "Update Changelog header",
+    "skip": {
+      "bump": true,
+      "tag": true
+    }
   }
 }
