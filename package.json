@@ -23,7 +23,7 @@
     "standard-version": "^9.5.0"
   },
   "standard-version": {
-    "header": "Update Changelog header",
+    "header": "CHANGELOG",
     "skip": {
       "tag": true
     }
