@@ -1,12 +1,13 @@
 {
   "name": "lab-cloud-run",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "server.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "standard": "standard-version"
   },
   "author": "Daniel Lozada",
   "license": "MIT",
@@ -17,5 +18,8 @@
     "express": "^4.18.2",
     "joi": "^17.11.0",
     "socket.io": "^4.7.2"
+  },
+  "devDependencies": {
+    "standard-version": "^9.5.0"
   }
 }
