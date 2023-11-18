@@ -1,4 +1,6 @@
 Update Changelog header
+### [1.2.1](https://github.com/adazol123/lab-cloud-run/compare/v1.2.0...v1.2.1) (2023-11-18)
+
 ## 1.2.0 (2023-11-18)
 
 ## 1.1.0 (2023-11-18)
