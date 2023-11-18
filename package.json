@@ -26,6 +26,7 @@
     "header": "Update Changelog header",
     "skip": {
       "bump": true,
+      "commit": true,
       "tag": true
     }
   }
